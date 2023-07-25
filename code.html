@@ -52,7 +52,8 @@
                             <a class="nav-link" href="https://github.com/aberry2288/" target="_blank">The Repo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://adamberrysportfolio.netlify.app/#about" target="_blank">About</a>
+                            <a class="nav-link" href="https://adamberrysportfolio.netlify.app/#about"
+                                target="_blank">About</a>
                         </li>
                         <!-- Need to add blog link -->
                         <li class="nav-item">
@@ -70,27 +71,58 @@
             <div class="col-12 col-lg-8">
                 <pre class="line-numbers">
                     <code class="language-js">
-                        function displayMessage() {
+                        function getValues() {
 
-                            let inputBox = document.getElementById('message');
+                            let userString = document.getElementById('userString').value;
                         
-                            let message = inputBox.value;
+                            let revString = reverseString(userString);
                         
-                            Swal.fire(
-                                {
-                                    backdrop: false,
-                                    title: 'App Name',
-                                    text: message
-                                }
-                            );
+                            displayString(revString);
+                        
+                        }
+                        
+                        function reverseString(input) {
+                        
+                           let revString = '';
+                        
+                            for (let index = input.length - 1; index >= 0; index = index - 1) {
+                        
+                                let letter = input[index];
+                        
+                                revString = revString + letter;
+                            }
+                        
+                            
+                        
+                            return revString;
+                        }
+                        
+                        function displayString(output) {
+                        
+                            document.getElementById('results').textContent = output;
+                        
+                            let alertBox = document.getElementById('alert');
+                        
+                            alertBox.classList.remove('invisible');
+                        
                         }
                     </code>
                 </pre>
             </div>
             <div class="col-12 col-lg-4">
-                <p>The code is structured in one function</p>
-                <h5>displayMessage</h5>
-                <p>Shows a sweet alert with the value of the <code>message</code> variable</p>
+                <p>The code is structured in three functions</p>
+                <h5>How it Works:</h5>
+                <p>The <code>getValues</code> function grabs the input value that the user has entered into the field.
+                    Then, we have created the variable revString and set it to equal the result of the second function
+                    <code>reverseString</code>. Finally, we have called back the third function
+                    <code>displayString</code> so it can display our results. The second function,
+                    <code>reverseString</code> uses a for loop that starts at the end of the array (in this case the
+                    array is just the string of text the user has entered on the page) and pulls out each individual
+                    character one at a time. Then, it reassembles the array, which is now in reverse, and returns that
+                    information to the <code>getValues</code>function. The third function, <code>displayString</code>,
+                    finds the results id in the HTML, removes the invisible class from the alert box and allows the
+                    information to be displayed on the page.
+                </p>
             </div>
         </div>
     </main>
